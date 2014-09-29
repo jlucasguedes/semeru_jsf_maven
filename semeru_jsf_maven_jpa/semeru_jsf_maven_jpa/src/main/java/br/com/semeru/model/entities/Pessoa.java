@@ -18,7 +18,7 @@ import org.hibernate.annotations.ForeignKey;
 @Table (name = "pessoa")
 public class Pessoa implements Serializable {
     
-    private static final Long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
     
     @Id
     @GeneratedValue
@@ -40,7 +40,7 @@ public class Pessoa implements Serializable {
     private Date dataDeCadastro;
 
     @ManyToOne
-    @ForeignKey ( name = "PessoaSexo")
+    @ForeignKey ( name = "Pessoa_Sex")
     private Pessoa pessoa;
    
     public Pessoa() {

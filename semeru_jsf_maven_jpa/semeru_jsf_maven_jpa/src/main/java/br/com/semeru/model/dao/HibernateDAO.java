@@ -16,7 +16,7 @@ import org.hibernate.criterion.DetachedCriteria;
  */
 public class HibernateDAO<T> implements InterfaceDAO<T>, Serializable{
     
-    private static final Long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
     
     private Class<T> classe;
     

@@ -13,31 +13,31 @@ import javax.persistence.Table;
 import org.hibernate.annotations.ForeignKey;
 
 @Entity
-@Table(name = "sexo")
-public class Sexo implements Serializable {
-
+@Table (name = "tipo_logradouro")
+public class TipoLogradouro implements Serializable {
+    
     private static final long serialVersionUID = 1L;
-
+    
     @Id
     @GeneratedValue
-    @Column(name = "idSexo", nullable = false)
-    private Integer idSexo;
-    @Column(name = "descricao", unique = true, length = 9)
+    @Column (name = "idTipoLogradouro", nullable = false)
+    private Integer idTipoLogradouro;
+    @Column (name = "descricao", length = 80, nullable = false)
     private String descricao;
+    
+    @OneToMany (mappedBy = "tipo_logradouro", fetch = FetchType.LAZY)
+    @ForeignKey (name = "Endereco_TipoEndereco")
+    private List<Endereco> enderecos;
 
-    @OneToMany(mappedBy = "Sexo", fetch = FetchType.LAZY)
-    @ForeignKey(name = "Pessoa_Sexo")
-    private List<Pessoa> pessoas;
-
-    public Sexo() {
+    public TipoLogradouro() {
     }
 
-    public Integer getIdSexo() {
-        return idSexo;
+    public Integer getIdTipoLogradouro() {
+        return idTipoLogradouro;
     }
 
-    public void setIdSexo(Integer idSexo) {
-        this.idSexo = idSexo;
+    public void setIdTipoLogradouro(Integer idTipoLogradouro) {
+        this.idTipoLogradouro = idTipoLogradouro;
     }
 
     public String getDescricao() {
@@ -48,18 +48,10 @@ public class Sexo implements Serializable {
         this.descricao = descricao;
     }
 
-    public List<Pessoa> getPessoas() {
-        return pessoas;
-    }
-
-    public void setPessoas(List<Pessoa> pessoas) {
-        this.pessoas = pessoas;
-    }
-
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 83 * hash + Objects.hashCode(this.idSexo);
+        hash = 59 * hash + Objects.hashCode(this.idTipoLogradouro);
         return hash;
     }
 
@@ -71,11 +63,13 @@ public class Sexo implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Sexo other = (Sexo) obj;
-        if (!Objects.equals(this.idSexo, other.idSexo)) {
+        final TipoLogradouro other = (TipoLogradouro) obj;
+        if (!Objects.equals(this.idTipoLogradouro, other.idTipoLogradouro)) {
             return false;
         }
         return true;
     }
-
+    
+    
+    
 }
